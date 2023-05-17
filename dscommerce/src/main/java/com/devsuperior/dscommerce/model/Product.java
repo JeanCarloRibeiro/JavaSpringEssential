@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -18,7 +17,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_product")
@@ -47,5 +48,9 @@ public class Product {
 
   @OneToMany(mappedBy = "id.product")
   private Set<OrderItem> items = new HashSet<>();
+
+  public List<Order> getOrders() {
+    return this.items.stream().map(OrderItem::getOrder).collect(Collectors.toList());
+  }
 
 }

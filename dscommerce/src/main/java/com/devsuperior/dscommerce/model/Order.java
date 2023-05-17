@@ -21,6 +21,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,5 +49,10 @@ public class Order {
 
   @OneToMany(mappedBy = "id.order")
   private Set<OrderItem> items = new HashSet<>();
+
+  public List<Product> getProducts() {
+    return this.items.stream().map(OrderItem::getProduct).collect(Collectors.toList());
+  }
+
 
 }
