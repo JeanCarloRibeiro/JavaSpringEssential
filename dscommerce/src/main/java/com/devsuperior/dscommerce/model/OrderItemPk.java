@@ -8,9 +8,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Embeddable
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
-public class OrderItemPk {
+public class OrderItemPk implements Serializable {
 
   @ManyToOne
   @JoinColumn(name = "order_id")

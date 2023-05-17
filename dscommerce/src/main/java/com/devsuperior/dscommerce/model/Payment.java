@@ -15,11 +15,13 @@ import lombok.Setter;
 
 import java.time.Instant;
 
-@Entity @Table(name = "tb_payment")
+@Entity
+@Table(name = "tb_payment")
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 public class Payment {
 
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
   private Instant moment;
