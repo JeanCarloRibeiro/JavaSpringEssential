@@ -5,7 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +28,9 @@ public class Block {
   private Instant inicio;
   @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
   private Instant fim;
+  @Setter(AccessLevel.NONE)
+  @ManyToOne
+  @JoinColumn(name = "activity_id")
+  private Activity activity;
 
 }
