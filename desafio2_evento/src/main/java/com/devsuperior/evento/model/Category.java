@@ -24,6 +24,6 @@ public class Category {
   @Column
   private String description;
   @OneToMany(mappedBy = "category")
-  private Set<Activity> activity;
+  private Set<Activity> activities;
 
 }
