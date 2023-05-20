@@ -4,6 +4,7 @@ import com.devsuperior.dscommerce.model.Product;
 import com.devsuperior.dscommerce.model.ProductDTO;
 import com.devsuperior.dscommerce.respositories.ProductRepository;
 import com.devsuperior.dscommerce.utils.ModelMapperUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,6 +39,19 @@ public class ProductService {
     Product result = this.repository.save(ModelMapperUtils.dtoToEntity(request, Product.class));
 
     return ModelMapperUtils.entityToDto(result, ProductDTO.class);
+  }
+
+  public ProductDTO update(Long id, ProductDTO requestDTO) {
+
+    Optional<Product> entity = this.repository.findById(id);
+
+    if (entity.isPresent()) {
+      BeanUtils.copyProperties(requestDTO, entity, "id");
+
+      Product result = this.repository.save(entity.get());
+      return ModelMapperUtils.entityToDto(result, ProductDTO.class);
+    }
+    return null;
   }
 
 }
