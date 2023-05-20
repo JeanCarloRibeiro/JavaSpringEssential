@@ -54,4 +54,7 @@ public class ProductService {
     return null;
   }
 
+  public void delete(Long id) {
+    this.repository.deleteById(id);
+  }
 }
