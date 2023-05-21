@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce.model;
+package com.devsuperior.dscommerce.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;

@@ -1,20 +1,22 @@
 package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.model.Product;
-import com.devsuperior.dscommerce.model.ProductDTO;
+import com.devsuperior.dscommerce.model.dto.ProductDTO;
 import com.devsuperior.dscommerce.respositories.ProductRepository;
+import com.devsuperior.dscommerce.services.exceptions.DataIntegrityViolationCustomException;
+import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
 import com.devsuperior.dscommerce.utils.ModelMapperUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -23,10 +25,10 @@ public class ProductService {
   private ProductRepository repository;
 
   public ProductDTO findById(Long id) {
-    Product product = this.repository.findById(id).orElse(null);
-    ProductDTO productDto = new ProductDTO();
+    Product product = this.repository.findById(id).orElseThrow(
+            () -> new ResourceNotFoundException(new ResourceNotFoundException()));
 
-    return ModelMapperUtils.entityToDto(product, productDto.getClass());
+    return ModelMapperUtils.entityToDto(product, new ProductDTO().getClass());
   }
 
   @Transactional(readOnly = true)
@@ -45,16 +47,26 @@ public class ProductService {
 
     Optional<Product> entity = this.repository.findById(id);
 
-    if (entity.isPresent()) {
-      BeanUtils.copyProperties(requestDTO, entity, "id");
-
-      Product result = this.repository.save(entity.get());
-      return ModelMapperUtils.entityToDto(result, ProductDTO.class);
+    if (!entity.isPresent()) {
+      throw new ResourceNotFoundException(new ResourceNotFoundException());
     }
-    return null;
+    BeanUtils.copyProperties(requestDTO, entity, "id");
+
+    Product result = this.repository.save(entity.get());
+    return ModelMapperUtils.entityToDto(result, ProductDTO.class);
   }
 
+  @Transactional(propagation = Propagation.SUPPORTS)
   public void delete(Long id) {
-    this.repository.deleteById(id);
+    try {
+      this.repository.deleteById(id);
+    } catch (EmptyResultDataAccessException e) {
+      throw new ResourceNotFoundException("Recurso não encontrado");
+    } catch (DataIntegrityViolationException e) {
+      throw new DataIntegrityViolationCustomException("Falha de integridade referencial");
+    }
+
   }
+
+
 }
