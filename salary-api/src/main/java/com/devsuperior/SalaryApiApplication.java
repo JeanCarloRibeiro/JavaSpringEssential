@@ -40,7 +40,6 @@ public class SalaryApiApplication implements CommandLineRunner {
     System.out.println("Entre com o percentual de deconto: ");
     order.setDiscount(sc.nextDouble());
 
-    System.out.println("Saída...");
     System.out.printf("Pedido código: %d \nValor total: R$%.2f", order.getCode(), orderService.total(order));
 
 
