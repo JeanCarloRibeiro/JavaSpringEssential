@@ -9,16 +9,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
 
 @Entity
 @Table(name = "tb_block")
-@AllArgsConstructor @NoArgsConstructor @Getter @Setter
 public class Block {
 
   @Id
@@ -32,5 +28,18 @@ public class Block {
   @ManyToOne
   @JoinColumn(name = "activity_id")
   private Activity activity;
+
+  public Block(Instant inicio, Instant fim, Activity activity) {
+    this.inicio = inicio;
+    this.fim = fim;
+    this.activity = activity;
+  }
+
+  public Activity getActivity() {
+    return activity;
+  }
+
+
+
 
 }

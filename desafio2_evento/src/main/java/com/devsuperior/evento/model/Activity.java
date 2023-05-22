@@ -12,15 +12,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Entity
 @Table(name = "tb_activity")
 public class Activity {
@@ -43,7 +39,26 @@ public class Activity {
           inverseJoinColumns = @JoinColumn(name = "participant_id"))
   private Set<Participant> participants = new HashSet<>();
 
+  public Activity() {
+  }
+
+  public Activity(String name, String description, double price, Category category) {
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.category = category;
+  }
+
   @OneToMany(mappedBy = "activity")
   private Set<Block> blocks = new HashSet<>();
+
+  public Set<Participant> getParticipants() {
+    return participants;
+  }
+
+  public Set<Block> getBlocks() {
+    return blocks;
+  }
+
 
 }
