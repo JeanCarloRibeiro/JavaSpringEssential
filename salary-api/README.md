@@ -9,6 +9,6 @@ Entre com o valor do pedido:
 800.00
 Entre com o percentual de deconto: 
 10.0
-Saída...
+
 Pedido código: 2282 
 Valor total: R$720.00
