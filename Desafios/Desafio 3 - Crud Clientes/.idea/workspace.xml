@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f9b7d993-917a-4b50-abe9-bc3dce00dae8" name="Changes" comment="Bean Validation" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.0.0/spring-data-commons-3.0.0-sources.jar!/org/springframework/data/repository/CrudRepository.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PqJPAbjdFwf8GFlN6SUhnWta3W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Estudos/Dev/SpringBoot/DevSuperior/Java Spring Essential/Desafios/Desafio3_Crud_Clientes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.22439587",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "70d4b6c490d2635cd0b07d03632729b6",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.devsuperior.dscommerce.dto" />
+      <recent name="com.devsuperior.dscommerce.respositories" />
+      <recent name="com.devsuperior.enums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Estudos\Dev\SpringBoot\DevSuperior\Java Spring Essential\dscommerce" />
+      <recent name="D:\Estudos\Dev\SpringBoot\DevSuperior\Java Spring Essential\dscommerce\src\main\resources" />
+      <recent name="D:\Estudos\Dev\SpringBoot\DevSuperior\Java Spring Essential\salary-api\src\main\java\com\devsuperior" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.devsuperior.crud" />
+      <recent name="com.devsuperior.dscommerce" />
+      <recent name="com.devsuperior" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.devsuperior.dscommerce.services.exceptions" />
+      <recent name="com.devsuperior.dscommerce.model.dto" />
+      <recent name="com.devsuperior.dscommerce.exceptions" />
+      <recent name="com.devsuperior.model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CrudClientes">
+    <configuration name="DsCommerceApiApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dscommerce-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.devsuperior.dscommerce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.devsuperior.dscommerce" />
+      <option name="MAIN_CLASS_NAME" value="com.devsuperior.dscommerce.DsCommerceApiApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dscommerce-api [clean]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map>
+                <entry key="test" value="true" />
+              </map>
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="CrudClientes" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="crud-clientes" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.devsuperior.crud.CrudClientes" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.DsCommerceApiApplicationTests" />
+      <item itemvalue="Maven.dscommerce-api [clean]" />
+      <item itemvalue="Spring Boot.CrudClientes" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DsCommerceApiApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f9b7d993-917a-4b50-abe9-bc3dce00dae8" name="Changes" comment="" />
+      <created>1684178651929</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684178651929</updated>
+      <workItem from="1684178652988" duration="4243000" />
+      <workItem from="1684184548424" duration="94000" />
+      <workItem from="1684254653484" duration="5743000" />
+      <workItem from="1684265415380" duration="10985000" />
+      <workItem from="1684332461161" duration="9834000" />
+      <workItem from="1684369436503" duration="17000" />
+      <workItem from="1684424111240" duration="28000" />
+      <workItem from="1684426911971" duration="42000" />
+      <workItem from="1684427868172" duration="30000" />
+      <workItem from="1684428306675" duration="207000" />
+      <workItem from="1684453374470" duration="740000" />
+      <workItem from="1684459988570" duration="94000" />
+      <workItem from="1684519931549" duration="8075000" />
+      <workItem from="1684610276266" duration="18700000" />
+      <workItem from="1684774087896" duration="1215000" />
+      <workItem from="1684787653694" duration="10611000" />
+      <workItem from="1684872092327" duration="2105000" />
+      <workItem from="1684940843658" duration="1338000" />
+      <workItem from="1684942339842" duration="1063000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit inicial">
+      <created>1684344341185</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684344341185</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Get Orders/Products by product/orders">
+      <created>1684345242297</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684345242297</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Database seeding">
+      <created>1684367090175</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684367090175</updated>
+    </task>
+    <task id="LOCAL-00004" summary="GET Products Page">
+      <created>1684611549240</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684611549240</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Post new product">
+      <created>1684614450498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684614450498</updated>
+    </task>
+    <task id="LOCAL-00006" summary="PUT product">
+      <created>1684617071848</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684617071848</updated>
+    </task>
+    <task id="LOCAL-00007" summary="DELETE product">
+      <created>1684618133548</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684618133548</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Exception handling">
+      <created>1684630807437</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684630807437</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Bean Validation">
+      <created>1684941078085</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684941078086</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="JavaSpringEssential/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="Commit inicial" />
+    <MESSAGE value="Get Orders/Products by product/orders" />
+    <MESSAGE value="Database seeding" />
+    <MESSAGE value="GET Products Page" />
+    <MESSAGE value="Post new product" />
+    <MESSAGE value="PUT product" />
+    <MESSAGE value="DELETE product" />
+    <MESSAGE value="Exception handling" />
+    <MESSAGE value="Bean Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bean Validation" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/devsuperior/crud/services/ProductService.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/devsuperior/crud/services/ProductService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/devsuperior/crud/controllers/ProductController.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.Optional" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
