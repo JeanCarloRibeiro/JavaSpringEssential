@@ -1,7 +1,7 @@
 package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.model.Product;
-import com.devsuperior.dscommerce.model.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.respositories.ProductRepository;
 import com.devsuperior.dscommerce.services.exceptions.DataIntegrityViolationCustomException;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;

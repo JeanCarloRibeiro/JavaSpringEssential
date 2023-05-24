@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce.model.dto;
+package com.devsuperior.dscommerce.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,19 +8,19 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ApiCustomError {
+public class CustomErrorDTO {
 
   private LocalDateTime timestamp;
   private Integer status;
   private String error;
   private String path;
 
-  public ApiCustomError(LocalDateTime timestamp) {
+  public CustomErrorDTO(LocalDateTime timestamp) {
     super();
     this.timestamp = timestamp;
   }
 
-  public ApiCustomError(HttpStatus status, String error, String path) {
+  public CustomErrorDTO(HttpStatus status, String error, String path) {
     super();
     this.timestamp = LocalDateTime.now();
     this.status = status.value();

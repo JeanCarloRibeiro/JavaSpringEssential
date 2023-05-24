@@ -1,6 +1,6 @@
 package com.devsuperior.dscommerce.controllers;
 
-import com.devsuperior.dscommerce.model.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class ProductController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO request) {
+  public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody @Valid  ProductDTO request) {
     ProductDTO result = this.productService.update(id, request);
 
     if (result == null) {
