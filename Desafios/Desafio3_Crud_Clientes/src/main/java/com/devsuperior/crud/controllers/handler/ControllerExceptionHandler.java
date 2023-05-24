@@ -3,6 +3,7 @@ package com.devsuperior.crud.controllers.handler;
 import com.devsuperior.crud.dto.CustomErrorDTO;
 import com.devsuperior.crud.dto.ValidationErrorDTO;
 import com.devsuperior.crud.services.exceptions.DataIntegrityViolationCustomException;
+import com.devsuperior.crud.services.exceptions.ResourceFoundException;
 import com.devsuperior.crud.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,12 @@ public class ControllerExceptionHandler {
       customError.addError(fieldName, msg);
     }
     return ResponseEntity.status(status).body(customError);
+  }
+
+  @ExceptionHandler({ResourceFoundException.class})
+  protected ResponseEntity<CustomErrorDTO> handleResourceFoundException(ResourceFoundException e, HttpServletRequest request) {
+    CustomErrorDTO customError = new CustomErrorDTO(HttpStatus.CONFLICT, e.getMessage(), request.getRequestURI().toString());
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(customError);
   }
 
 
