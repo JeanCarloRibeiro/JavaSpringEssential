@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudClientes {
+public class CrudClientApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(CrudClientes.class, args);
+    SpringApplication.run(CrudClientApplication.class, args);
   }
 
 
