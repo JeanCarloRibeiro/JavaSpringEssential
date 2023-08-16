@@ -1,5 +1,6 @@
 package com.devsuperior.dscommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,17 +29,12 @@ public class Product {
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
   private String name;
-
   @Column(columnDefinition = "TEXT")
   private String description;
-
   private double price;
-
   @Column(columnDefinition = "TEXT")
   private String imgUrl;
-
   @Setter(AccessLevel.NONE)
   @ManyToMany
   @JoinTable(name = "tb_product_category",
@@ -53,4 +49,7 @@ public class Product {
     return this.items.stream().map(OrderItem::getOrder).collect(Collectors.toList());
   }
 
+  public Set<Category> getCategories() {
+    return categories;
+  }
 }

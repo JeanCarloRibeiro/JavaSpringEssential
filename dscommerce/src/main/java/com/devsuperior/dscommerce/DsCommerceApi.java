@@ -8,9 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DsCommerceApi {
 
-  @Autowired
-  private OrderService orderService;
-
   public static void main(String[] args) {
     SpringApplication.run(DsCommerceApi.class, args);
   }

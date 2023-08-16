@@ -1,18 +1,21 @@
 package com.devsuperior.dscommerce.dto;
 
+import com.devsuperior.dscommerce.model.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Range;
 
-@AllArgsConstructor
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @NoArgsConstructor
 @Getter @Setter
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ProductDTO {
 
   private Long id;
@@ -26,6 +29,25 @@ public class ProductDTO {
   private double price;
   @NotEmpty
   private String imgUrl;
+  private List<CategoryDTO> categories = new ArrayList<>();
+
+  public ProductDTO(Long id, String name, String description, double price, String imgUrl) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.imgUrl = imgUrl;
+  }
+
+  public ProductDTO(Product product) {
+    this.id = product.getId();
+    this.name = product.getName();
+    this.description = product.getDescription();
+    this.price = product.getPrice();
+    this.imgUrl = product.getImgUrl();
+    this.categories = product.getCategories().stream().map(CategoryDTO::new).collect(Collectors.toList());
+  }
+
 
 
 }
