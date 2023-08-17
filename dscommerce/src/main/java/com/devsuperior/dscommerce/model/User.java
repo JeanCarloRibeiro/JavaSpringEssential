@@ -46,7 +46,6 @@ public class User implements UserDetails {
   private LocalDate birthDate;
   @Column
   private String password;
-  @Column
   @OneToMany(mappedBy = "client")
   @Setter(AccessLevel.NONE)
   private List<Order> orders = new ArrayList<>();

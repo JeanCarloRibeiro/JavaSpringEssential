@@ -1,7 +1,7 @@
 package com.devsuperior.dscommerce.controllers;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
-import com.devsuperior.dscommerce.model.Product;
+import com.devsuperior.dscommerce.dto.ProductMinDTO;
 import com.devsuperior.dscommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,29 +38,12 @@ public class ProductController {
     return ResponseEntity.ok(productDTO);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")@GetMapping
-  public ResponseEntity<Page<ProductDTO>> getProductsByName(
-          @RequestParam(name = "name", defaultValue = "") String name,
-          Pageable pageable) {
-
-    Page<ProductDTO> productPage = this.productService.searchByName(name, pageable);
-    return ResponseEntity.ok(productPage);
-  }
-
   @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
-  @GetMapping("/all")
-  public ResponseEntity<List<ProductDTO>> getProductsByNameJoin() {
-
-    List<ProductDTO> productPage = this.productService.searchAll();
-    return ResponseEntity.ok(productPage);
-  }
-
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
-  @GetMapping("/all-page")
-  public ResponseEntity<Page<ProductDTO>> getProductsByNamePage(
+  @GetMapping
+  public ResponseEntity<Page<ProductMinDTO>> getProductsByNamePage(
           @RequestParam(value = "name", required = false) String name, Pageable pageable) {
 
-    Page<ProductDTO> productPage = this.productService.searchByPage(name, pageable);
+    Page<ProductMinDTO> productPage = this.productService.searchByPage(name, pageable);
     return ResponseEntity.ok(productPage);
   }
 
@@ -74,7 +57,7 @@ public class ProductController {
     return ResponseEntity.created(uri).body(result);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
   @PutMapping("/{id}")
   public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody @Valid  ProductDTO request) {
     ProductDTO result = this.productService.update(id, request);
@@ -86,6 +69,7 @@ public class ProductController {
     return ResponseEntity.ok().body(result);
   }
 
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     this.productService.delete(id);

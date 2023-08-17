@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductMinDTO;
 import com.devsuperior.dscommerce.model.Product;
 import com.devsuperior.dscommerce.respositories.ProductRepository;
 import com.devsuperior.dscommerce.services.exceptions.DataIntegrityViolationCustomException;
@@ -16,9 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -71,21 +70,9 @@ public class ProductService {
   }
 
   @Transactional(readOnly = true)
-  public Page<ProductDTO> searchByName(String name, Pageable pageable) {
-    Page<Product> products = this.repository.searchByName(name, pageable);
-    return products.map(ProductDTO::new);
-  }
-
-  @Transactional(readOnly = true)
-  public List<ProductDTO> searchAll() {
-    List<Product> products = this.repository.searchAll();
-    return products.stream().map(ProductDTO::new).collect(Collectors.toList());
-  }
-
-  @Transactional(readOnly = true)
-  public Page<ProductDTO> searchByPage(String name, Pageable pageable) {
-    Page<Product> products = this.repository.searchByPage(name, pageable);
-    return products.map(ProductDTO::new);
+  public Page<ProductMinDTO> searchByPage(String name, Pageable pageable) {
+    Page<Product> products = this.repository.searchByNamePageable(name, pageable);
+    return products.map(ProductMinDTO::new);
   }
 
 }
