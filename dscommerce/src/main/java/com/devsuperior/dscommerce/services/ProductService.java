@@ -39,8 +39,8 @@ public class ProductService {
   }
 
   public ProductDTO save(ProductDTO request) {
-    Product result = this.repository.save(ModelMapperUtils.dtoToEntity(request, Product.class));
-
+    Product dtoToEntity = ModelMapperUtils.dtoToEntity(request, Product.class);
+    Product result = this.repository.save(dtoToEntity);
     return ModelMapperUtils.entityToDto(result, ProductDTO.class);
   }
 

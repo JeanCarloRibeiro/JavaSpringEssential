@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Getter @Setter
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ProductDTO {
 
   private Long id;
@@ -29,6 +28,7 @@ public class ProductDTO {
   private double price;
   @NotEmpty
   private String imgUrl;
+  @NotEmpty(message = "Deve ter pelo menos uma categoria")
   private List<CategoryDTO> categories = new ArrayList<>();
 
   public ProductDTO(Long id, String name, String description, double price, String imgUrl) {

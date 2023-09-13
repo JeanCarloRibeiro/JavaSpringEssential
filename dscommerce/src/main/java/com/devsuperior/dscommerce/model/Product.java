@@ -1,6 +1,5 @@
 package com.devsuperior.dscommerce.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +31,7 @@ public class Product {
   private String name;
   @Column(columnDefinition = "TEXT")
   private String description;
+  @Column(name = "price")
   private double price;
   @Column(columnDefinition = "TEXT")
   private String imgUrl;

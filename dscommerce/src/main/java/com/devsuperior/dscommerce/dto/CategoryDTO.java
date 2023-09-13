@@ -2,16 +2,16 @@ package com.devsuperior.dscommerce.dto;
 
 import com.devsuperior.dscommerce.model.Category;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class CategoryDTO {
 
   private Long id;
   private String name;
 
   public CategoryDTO(Long id, String name) {
-    super();
     this.id = id;
     this.name = name;
   }
