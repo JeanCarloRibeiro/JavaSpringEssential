@@ -75,4 +75,11 @@ public class ProductService {
     return products.map(ProductMinDTO::new);
   }
 
+  @Transactional(readOnly = true)
+  public ProductDTO getReferenceById(Long id) {
+    Product product = this.repository.getReferenceById(id);
+    return new ProductDTO(product);
+  }
+
+
 }

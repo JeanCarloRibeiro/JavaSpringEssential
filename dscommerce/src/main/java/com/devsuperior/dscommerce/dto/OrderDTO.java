@@ -3,6 +3,7 @@ package com.devsuperior.dscommerce.dto;
 import com.devsuperior.dscommerce.enums.OrderStatus;
 import com.devsuperior.dscommerce.model.Order;
 import com.devsuperior.dscommerce.model.OrderItem;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,7 @@ public class OrderDTO {
   private OrderStatus status;
   private ClientDTO client;
   private PaymentDTO payment;
+  @NotEmpty(message = "Deve ter pelo menos um item")
   private List<OrderItemDTO> items = new ArrayList<>();
 
   public OrderDTO(Order order) {
