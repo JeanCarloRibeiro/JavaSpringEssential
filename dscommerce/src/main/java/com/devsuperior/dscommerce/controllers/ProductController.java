@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -30,7 +29,7 @@ public class ProductController {
   @Autowired
   ProductService productService;
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
   @GetMapping("/{id}")
   public ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") Long id) {
     ProductDTO productDTO = this.productService.findById(id);
@@ -38,7 +37,7 @@ public class ProductController {
     return ResponseEntity.ok(productDTO);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
   @GetMapping
   public ResponseEntity<Page<ProductMinDTO>> getProductsByNamePage(
           @RequestParam(value = "name", required = false) String name, Pageable pageable) {
