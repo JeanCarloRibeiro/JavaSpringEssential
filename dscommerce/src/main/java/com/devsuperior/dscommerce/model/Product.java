@@ -52,4 +52,18 @@ public class Product {
   public Set<Category> getCategories() {
     return categories;
   }
+
+  @Override
+  public String toString() {
+    return "Product{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", price=" + price +
+            ", imgUrl='" + imgUrl + '\'' +
+            ", categories=" + categories +
+            ", items=" + items +
+            '}';
+  }
+
 }

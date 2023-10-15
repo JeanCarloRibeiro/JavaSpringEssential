@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,5 @@ public class ProductDTO {
     this.imgUrl = product.getImgUrl();
     this.categories = product.getCategories().stream().map(CategoryDTO::new).collect(Collectors.toList());
   }
-
-
 
 }

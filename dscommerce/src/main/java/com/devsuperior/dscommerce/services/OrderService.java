@@ -50,7 +50,6 @@ public class OrderService {
     order.setClient(this.userService.authenticated());
 
     for (OrderItemDTO itemDTO : request.getItems()) {
-      //Product product = this.productRepository.getReferenceById(itemDTO.getProductId());
       ProductDTO referenceById = this.productService.getReferenceById(itemDTO.getProductId());
       Product product = ModelMapperUtils.dtoToEntity(referenceById, Product.class);
       OrderItem item = new OrderItem(order, product, itemDTO.getQuantity(), product.getPrice());

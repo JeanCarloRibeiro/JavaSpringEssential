@@ -29,7 +29,6 @@ public class ProductController {
   @Autowired
   ProductService productService;
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
   @GetMapping("/{id}")
   public ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") Long id) {
     ProductDTO productDTO = this.productService.findById(id);
@@ -37,9 +36,8 @@ public class ProductController {
     return ResponseEntity.ok(productDTO);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
   @GetMapping
-  public ResponseEntity<Page<ProductMinDTO>> getProductsByNamePage(
+  public ResponseEntity<Page<ProductMinDTO>> getProductsByName(
           @RequestParam(value = "name", required = false) String name, Pageable pageable) {
 
     Page<ProductMinDTO> productPage = this.productService.searchByPage(name, pageable);
@@ -56,7 +54,7 @@ public class ProductController {
     return ResponseEntity.created(uri).body(result);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   @PutMapping("/{id}")
   public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody @Valid  ProductDTO request) {
     ProductDTO result = this.productService.update(id, request);
@@ -68,7 +66,7 @@ public class ProductController {
     return ResponseEntity.ok().body(result);
   }
 
-  @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     this.productService.delete(id);
