@@ -29,6 +29,11 @@ public class Category {
   @ManyToMany(mappedBy = "categories")
   private Set<Product> products = new HashSet<>();
 
+  public Category(Long id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
   @Override
   public String toString() {
     return "Category{" +

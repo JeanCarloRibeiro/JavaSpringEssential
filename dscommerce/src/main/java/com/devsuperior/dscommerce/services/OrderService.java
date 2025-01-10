@@ -2,7 +2,6 @@ package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.dto.OrderDTO;
 import com.devsuperior.dscommerce.dto.OrderItemDTO;
-import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.enums.OrderStatus;
 import com.devsuperior.dscommerce.model.Order;
 import com.devsuperior.dscommerce.model.OrderItem;
@@ -11,7 +10,6 @@ import com.devsuperior.dscommerce.respositories.OrderItemRepository;
 import com.devsuperior.dscommerce.respositories.OrderRepository;
 import com.devsuperior.dscommerce.respositories.ProductRepository;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
-import com.devsuperior.dscommerce.utils.ModelMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +35,7 @@ public class OrderService {
   @Transactional(readOnly = true)
   public OrderDTO findById(Long id) {
     Order order = this.orderRepository.findById(id).orElseThrow(
-            () -> new ResourceNotFoundException(new ResourceNotFoundException()));
+            () -> new ResourceNotFoundException("Order not found"));
 
     authService.validateSelfOrAdmin(order.getClient().getId());
     return new OrderDTO(order);
@@ -50,16 +48,14 @@ public class OrderService {
     order.setClient(this.userService.authenticated());
 
     for (OrderItemDTO itemDTO : request.getItems()) {
-      ProductDTO referenceById = this.productService.getReferenceById(itemDTO.getProductId());
-      Product product = ModelMapperUtils.dtoToEntity(referenceById, Product.class);
+      Product product = this.productRepository.getReferenceById(itemDTO.getProductId());
       OrderItem item = new OrderItem(order, product, itemDTO.getQuantity(), product.getPrice());
       order.getItems().add(item);
     }
-
-    this.orderRepository.save(order);
+    Order orderSaved = this.orderRepository.save(order);
     this.orderItemRepository.saveAll(order.getItems());
 
-    return new OrderDTO(order);
+    return new OrderDTO(orderSaved);
 
   }
 }

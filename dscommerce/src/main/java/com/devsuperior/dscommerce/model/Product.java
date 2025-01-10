@@ -45,6 +45,14 @@ public class Product {
   @OneToMany(mappedBy = "id.product")
   private Set<OrderItem> items = new HashSet<>();
 
+  public Product(Long id, String name, String description, double price, String imgUrl) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.imgUrl = imgUrl;
+  }
+
   public List<Order> getOrders() {
     return this.items.stream().map(OrderItem::getOrder).collect(Collectors.toList());
   }

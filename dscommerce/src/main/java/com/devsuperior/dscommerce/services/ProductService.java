@@ -9,16 +9,14 @@ import com.devsuperior.dscommerce.respositories.ProductRepository;
 import com.devsuperior.dscommerce.services.exceptions.DataIntegrityViolationCustomException;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
 import com.devsuperior.dscommerce.utils.ModelMapperUtils;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -77,36 +75,27 @@ public class ProductService {
   @Transactional
   public ProductDTO update(Long id, ProductDTO requestDTO) {
 
-    Optional<Product> entity = this.repository.findById(id);
-    Product product;
-
-    if (!entity.isPresent()) {
+    try {
+      Product entity = this.repository.getReferenceById(id);
+      copyDtoToEntity(requestDTO, entity);
+      Product result = this.repository.save(entity);
+      return new ProductDTO(result);
+    } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(new ResourceNotFoundException());
-    } else {
-      product = entity.get();
     }
-    copyDtoToEntity(requestDTO, product);
-
-    Product result = this.repository.save(product);
-    return new ProductDTO(result);
   }
 
   @Transactional(propagation = Propagation.SUPPORTS)
   public void delete(Long id) {
+    if (!repository.existsById(id)) {
+      throw new ResourceNotFoundException("Recurso não encontrado");
+    }
     try {
       this.repository.deleteById(id);
-    } catch (EmptyResultDataAccessException e) {
-      throw new ResourceNotFoundException("Recurso não encontrado");
     } catch (DataIntegrityViolationException e) {
       throw new DataIntegrityViolationCustomException("Falha de integridade referencial");
     }
 
-  }
-
-  @Transactional(readOnly = true)
-  public ProductDTO getReferenceById(Long id) {
-    Product product = this.repository.getReferenceById(id);
-    return new ProductDTO(product);
   }
 
 

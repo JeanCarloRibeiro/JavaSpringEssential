@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,15 +20,13 @@ public class CategoryService {
   @Transactional(readOnly = true)
   public List<CategoryDTO> findAll() {
     List<Category> result = this.repository.findAll();
-    return result.stream().map(x -> new CategoryDTO(x))
-            .collect(Collectors.toList());
+    return result.stream().map(CategoryDTO::new).collect(Collectors.toList());
   }
 
   @Transactional(readOnly = true)
   public CategoryDTO findById(Long id) {
     Category result = this.repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException(new ResourceNotFoundException()));
-
     return new CategoryDTO(result);
   }
 

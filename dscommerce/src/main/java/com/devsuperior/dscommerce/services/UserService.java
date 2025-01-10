@@ -5,13 +5,11 @@ import com.devsuperior.dscommerce.model.Role;
 import com.devsuperior.dscommerce.model.User;
 import com.devsuperior.dscommerce.projections.UserDetailsProjection;
 import com.devsuperior.dscommerce.respositories.UserRepository;
+import com.devsuperior.dscommerce.utils.AuthenticationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,12 +21,15 @@ public class UserService implements UserDetailsService {
 
   @Autowired
   UserRepository userRepository;
+  @Autowired
+  AuthenticationUtils authenticationUtils;
+
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
     List<UserDetailsProjection> result = this.userRepository.searchUserAndRolesByEmail(email);
     if (result.isEmpty()) {
-      throw new UsernameNotFoundException("User notfound.....");
+      throw new UsernameNotFoundException("Email not found");
     }
     User user = new User(result.get(0).getUserName(), email, result.get(0).getPassword());
     for (UserDetailsProjection r : result) {
@@ -38,14 +39,16 @@ public class UserService implements UserDetailsService {
   }
 
   protected User authenticated() {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
-    String username = jwtPrincipal.getClaim("username");
-    Optional<User> result = userRepository.findByEmail(username);
-    if (!result.isPresent()) {
+    try {
+      String username = authenticationUtils.getLoggedUserName();
+      Optional<User> result = userRepository.findByEmail(username);
+      if (result.isEmpty()) {
+        throw new UsernameNotFoundException("Email not found...");
+      }
+      return result.get();
+    } catch (Exception e) {
       throw new UsernameNotFoundException("Email not found...");
     }
-    return result.get();
   }
 
   @Transactional(readOnly = true)

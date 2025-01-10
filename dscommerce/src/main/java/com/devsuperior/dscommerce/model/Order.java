@@ -50,6 +50,14 @@ public class Order {
   @OneToMany(mappedBy = "id.order")
   private Set<OrderItem> items = new HashSet<>();
 
+  public Order(long id, Instant moment, OrderStatus status, User client, Payment payment) {
+    this.id = id;
+    this.moment = moment;
+    this.status = status;
+    this.client = client;
+    this.payment = payment;
+  }
+
   public List<Product> getProducts() {
     return this.items.stream().map(OrderItem::getProduct).collect(Collectors.toList());
   }

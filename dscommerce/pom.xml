@@ -62,7 +62,7 @@
 			<version>3.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.0.CR2</version>
 		</dependency>
@@ -116,6 +116,61 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<configuration>
+					<excludes>
+						<exclude>com/devsuperior/dscommerce/DsCommerceApi.class</exclude>
+						<exclude>com/devsuperior/dscommerce/config/**</exclude>
+						<exclude>com/devsuperior/dscommerce/model/**</exclude>
+						<exclude>com/devsuperior/dscommerce/enums/**</exclude>
+						<exclude>com/devsuperior/dscommerce/dto/**</exclude>
+						<exclude>com/devsuperior/dscommerce/controllers/handlers/**</exclude>
+						<exclude>com/devsuperior/dscommerce/services/exceptions/**</exclude>
+						<exclude>com/devsuperior/dscommerce/utils/**</exclude>
+						<exclude>com/devsuperior/dscommerce/controllers/**</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/jacoco-report</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-audit-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<haltOnFailure>false</haltOnFailure>
+							<rules>
+								<rule>
+									<limits>
+										<limit>
+											<counter>INSTRUCTION</counter>
+<!--											<value>COVEREDRATIO</value>-->
+<!--											<minimum>70.0%</minimum>-->
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

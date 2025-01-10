@@ -1,5 +1,6 @@
 package com.devsuperior.dscommerce.model;
 
+import com.devsuperior.dscommerce.dto.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,6 +60,24 @@ public class User implements UserDetails {
     this.email = name;
     this.email = email;
     this.password = password;
+  }
+
+  public User(Long id, String name, String email, String phone, LocalDate birthDate, String password, Set<Role> roles) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.phone = phone;
+    this.birthDate = birthDate;
+    this.password = password;
+    this.roles = roles;
+  }
+
+  public User(UserDTO u) {
+    this.id = u.getId();
+    this.name = u.getName();
+    this.email = u.getEmail();
+    this.phone = u.getPhone();
+    this.birthDate = u.getBirthDate();
   }
 
   public void addRole(Role role) {
