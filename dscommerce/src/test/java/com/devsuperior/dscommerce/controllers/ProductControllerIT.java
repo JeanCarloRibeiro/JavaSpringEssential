@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce;
+package com.devsuperior.dscommerce.controllers;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.model.Category;

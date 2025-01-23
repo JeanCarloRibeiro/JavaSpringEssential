@@ -50,7 +50,7 @@ public class Order {
   @OneToMany(mappedBy = "id.order")
   private Set<OrderItem> items = new HashSet<>();
 
-  public Order(long id, Instant moment, OrderStatus status, User client, Payment payment) {
+  public Order(Long id, Instant moment, OrderStatus status, User client, Payment payment) {
     this.id = id;
     this.moment = moment;
     this.status = status;
