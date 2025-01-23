@@ -35,6 +35,7 @@ public class Product {
   private double price;
   @Column(columnDefinition = "TEXT")
   private String imgUrl;
+  @Getter
   @Setter(AccessLevel.NONE)
   @ManyToMany
   @JoinTable(name = "tb_product_category",
@@ -55,10 +56,6 @@ public class Product {
 
   public List<Order> getOrders() {
     return this.items.stream().map(OrderItem::getOrder).collect(Collectors.toList());
-  }
-
-  public Set<Category> getCategories() {
-    return categories;
   }
 
   @Override
